@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h1>These are the threads that are open, feel free to start a new one too!</h1>
+{% if threads%}
+{% for thread in threads %}
+   <p>Topic: {{thread.subject}}. Name:{{thread.creator.user.first_name}} - {{thread.created}}</p> 
+   <a href="{% url 'comment' thread.id%}">Read more</a>
+   {% endfor %}
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary">Start Thread</button>
+</form>
+{% endblock %}

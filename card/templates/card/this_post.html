@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+
+
+{% block content %}
+<h2>This is the post</h2>
+
+<div class='row'>
+
+
+    <ul class="list-group">
+        <li><a  href="{% url 'all_posts'%}">Open Market</a></li>
+
+        <li class="list-group-item">Name: {{object.singular.card.name}} </li>
+        <li class="list-group-item">Rarity: {{object.singular.card.rarity}}</li>
+        <li class="list-group-item">Type: {% for tp in object.singular.card.tipe.all %} {{tp}}{% endfor %}</li>
+        <li class="list-group-item">Owner {{object.singular.owner.user.first_name}}</li>
+
+        {% if object.response_set.all %}
+        
+        <hr>
+        <li class="list-group-item">OFFERs</li>
+        {% for response in object.response_set.all%}
+        <li class="list-group-item">Name: {{response.card_buyer.card.name}}</li>
+
+        <li class="list-group-item">Name: {{response.card_buyer.card.name}}</li>
+        <li class="list-group-item">Rarity: {{response.card_buyer.card.rarity}}</li>
+        <li class="list-group-item">Type: {% for tp in response.card_buyer.card.tipe.all %} {{tp}}{% endfor %}</li>
+        <li class="list-group-item">Owner {{response.buyer.user.first_name}}</li>
+        <li><a  href="{% url 'answer' response.id %}">Accept?</a></li>
+
+        {% endfor %}
+        {% endif %}
+
+       
+      </ul>
+   
+</div>
+
+
+{% endblock %}

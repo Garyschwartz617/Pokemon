@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h1>Your comments about the topic at hand</h1>
+{% if comments%}
+{% for comment in comments %}
+   <p>Topic: {{comment.text}}. Name:{{comment.user_id.user.first_name}} - {{comment.created}}</p> 
+{% endfor %}
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary">Add your thoughts</button>
+</form>
+{% endblock %}

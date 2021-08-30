@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+
+
+{% block content %}
+<h2>These are all the posted cards</h2>
+
+<div class= 'row'>
+{% for post in object_list %}
+<div class="card" style="width: 18rem;">
+    <img src="#" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{post.singular.card.name}}</h5>
+      <p class="card-text">Rarity: {{post.singular.card.rarity}}</p></p>
+<p class="card-text">Type: {% for tp in post.singular.card.tipe.all %} {{tp}}{% endfor %}</p>
+<p><a href="{% url 'response' post.id%}">Offer your best</a></p>
+<p><a href="{% url 'all_response' post.id%}">All Offers</a></p>
+
+</div>
+  </div>
+{% endfor %}
+
+</div>
+{% endblock %}
