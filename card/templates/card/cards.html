@@ -8,7 +8,9 @@
 <div class= 'row'>
 {% for card in object_list %}
 <div class="card" style="width: 18rem;">
-    <img src="#" class="card-img-top" alt="">
+  {% if card.image %}
+    <img src="{{ card.image.url }}"  enctype="multipart/form-data" class="card-img-top" alt="">
+    {% endif %}
     <div class="card-body">
       <h5 class="card-title">{{card.name}}</h5>
       <p class="card-text">Rarity: {{card.rarity}}</p></p>

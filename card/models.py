@@ -13,6 +13,7 @@ class Card(models.Model):
     name = models.CharField(max_length=100)
     tipe = models.ManyToManyField(Type,blank=True)
     rarity = models.IntegerField()
+    image = models.ImageField(upload_to='posts/', null=True,blank=True)   
 
     def create_cards(self):
         
