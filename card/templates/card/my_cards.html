@@ -18,6 +18,15 @@
   
   <button class="btn btn-primary">Post this card</button>
 </form>
+<p></p>
+{% if user.is_superuser%}
+<form action="{%url 'delete_singular' me.id%}" method="post">
+ {% csrf_token %}
+ 
+ <button class="btn btn-danger">Delete This card</button>
+</form>
+{% endif %}
+
       <p></p>
     </div>
   </div>

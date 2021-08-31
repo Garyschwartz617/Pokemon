@@ -3,21 +3,42 @@
 
 
 {% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <h2>These are all the posted cards</h2>
 
 <div class= 'row'>
 {% for post in object_list %}
+{% if post.status == 'O' %}
 <div class="card" style="width: 18rem;">
     <img src="#" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title">{{post.singular.card.name}}</h5>
       <p class="card-text">Rarity: {{post.singular.card.rarity}}</p></p>
 <p class="card-text">Type: {% for tp in post.singular.card.tipe.all %} {{tp}}{% endfor %}</p>
-<p><a href="{% url 'response' post.id%}">Offer your best</a></p>
 <p><a href="{% url 'all_response' post.id%}">All Offers</a></p>
-
+<form action="{%url 'response' post.id%}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary">Offer trade</button>
+</form>
 </div>
+{% if user.is_superuser%}
+<form action="{%url 'delete_singular' post.singular.id%}" method="post">
+ {% csrf_token %}
+ 
+ <button class="btn btn-danger">Delete This card</button>
+</form>
+{% endif %}
   </div>
+  
+  {% endif %}
 {% endfor %}
 
 </div>

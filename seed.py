@@ -43,8 +43,20 @@ def create(num):
         if response.status_code == 200:
             r = response.json()['capture_rate']
             c =Card.objects.create(name = poke_name,rarity= r)
-            c.type.set(typs)
+            c.tipe.set(typs)
 
 # print(Type.objects.all())
-# for l in range(1,152):
+# for l in range(1,898):
 #     create(l)        
+
+# response = requests.get(f'https://archives.bulbagarden.net/wiki/Category:Bulbasaur')
+# if response.status_code == 200:
+#     data = response.json()
+#     print (data)
+
+
+# response = requests.get(f'https://pokeapi.co/api/v2/pokemon/898')
+# if response.status_code == 200:
+#     data = response.json()
+#     poke_name = data['name']
+#     print(poke_name)

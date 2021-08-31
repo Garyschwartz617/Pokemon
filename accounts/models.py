@@ -9,6 +9,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=50, null=True)
     number = models.CharField(max_length=30, null=True)
+    
 
     def __str__(self):
         return self.user.username

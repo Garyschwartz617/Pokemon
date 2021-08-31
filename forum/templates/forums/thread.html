@@ -6,6 +6,13 @@
 {% for thread in threads %}
    <p>Topic: {{thread.subject}}. Name:{{thread.creator.user.first_name}} - {{thread.created}}</p> 
    <a href="{% url 'comment' thread.id%}">Read more</a>
+   {% if user.is_superuser%}
+   <form action="{%url 'delete_thread' thread.id%}" method="post">
+    {% csrf_token %}
+    
+    <button class="btn btn-danger">Delete Thread</button>
+  </form>
+{% endif %}
    {% endfor %}
 {% endif %}
 

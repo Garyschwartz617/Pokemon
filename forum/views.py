@@ -2,11 +2,11 @@ from django.shortcuts import render,redirect
 from django.views.generic import CreateView, UpdateView, DetailView
 from .models import Comment, Thread
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 # Create your views here.
 
 
-class CreateThreadView(CreateView):
+class CreateThreadView(LoginRequiredMixin,CreateView):
     model = Thread
     fields =['subject']
     success_url = reverse_lazy('thread')
@@ -25,7 +25,7 @@ class CreateThreadView(CreateView):
         return super().form_valid(form)
 
 
-class CreateCommentView(CreateView):
+class CreateCommentView(LoginRequiredMixin,CreateView):
     model = Comment
     fields =['text']
     # success_url = reverse_lazy('comment',)

@@ -20,6 +20,9 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'my_cards'%}">My cards</a></li>
               <li><a class="dropdown-item" href="{% url 'thread'%}">Forum</a></li>
+              {% if user.is_superuser %}
+              <li><a class="dropdown-item" href="{% url 'all_users'%}">User list</a></li>
+              {% endif %}
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'all_posts'%}">Open Market</a></li>
             </ul>

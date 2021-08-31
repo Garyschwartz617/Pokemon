@@ -8,8 +8,13 @@
     {{user_form.as_p}}
     <button class="btn btn-primary">Submit</button>
 </form>
-
-{% if user.profile.pic %}
+<p> my money = {{money}}</p>
+{% if user.is_superuser %}
+<form action="{%url 'create_cards' %}" method="post">
+    {% csrf_token %}
+    
+    <button class="btn btn-warning">Create Cards</button>
+  </form>
 
 {% endif %}
 {% endblock %}
