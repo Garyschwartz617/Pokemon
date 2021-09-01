@@ -7,8 +7,11 @@
 
 <div class= 'row'>
 {% for me in mine %}
-<div class="card" style="width: 18rem;">
-    <img src="#" class="card-img-top" alt="">
+<div class="card" style="width: 18rem;">  
+  {% if me.card.image %}
+  <img src="{{ me.card.image }}"  enctype="multipart/form-data" class="card-img-top" alt="">
+  {% endif %}
+
     <div class="card-body">
       <h5 class="card-title">{{me.card.name}}</h5>
       <p class="card-text">Rarity: {{me.card.rarity}}</p></p>

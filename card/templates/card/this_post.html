@@ -31,7 +31,9 @@
         <li class="list-group-item">Owner {{response.buyer.user.first_name}}</li>
         {% if response.post.profile == me %}
         <li><a  href="{% url 'answer' response.id %}">Accept?</a></li>
+        <p>y</p>
         {% endif %}
+        <p></p>
         {% endif %}
         {% endfor %}
         {% endif %}

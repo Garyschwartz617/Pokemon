@@ -69,15 +69,43 @@ def create(num):
 #     poke_name = data['name']
 #     print(poke_name)
 
-# from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 # page = requests.get("https://archives.bulbagarden.net/wiki/Category:Bulbasaur")
 
 # soup = BeautifulSoup(page.content, 'html.parser')
 
+# q =soup.find_all('img',decoding="async")
+# a =q[0]['src']
+# print(a)
 # print(soup.prettify())
-bulb = Card.objects.get(id = 1)
-# bulb.image = 'https://archives.bulbagarden.net/media/upload/thumb/0/09/001_Bulbasaur_Channel_2.png/120px-001_Bulbasaur_Channel_2.png" srcset="https://archives.bulbagarden.net/media/upload/thumb/0/09/001_Bulbasaur_Channel_2.png/180px-001_Bulbasaur_Channel_2.png 1.5x, https://archives.bulbagarden.net/media/upload/0/09/001_Bulbasaur_Channel_2.png 2x'
-bulb.image = 'https://archives.bulbagarden.net/media/upload/thumb/8/8b/001Bulbasaur_Battle_Royale.jpg/240px-001Bulbasaur_Battle_Royale.jpg '
-bulb.image = 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fc%2Fc0%2FHarry_Potter_and_the_Chamber_of_Secrets_movie.jpg&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHarry_Potter_and_the_Chamber_of_Secrets_(film)&tbnid=g0A5dL9hy77P6M&vet=12ahUKEwjA067qg9zyAhVIYxoKHZKKAzUQMygBegUIARD-AQ..i&docid=LCXJEUuIn28w0M&w=368&h=270&q=harry%20potter%202&client=safari&ved=2ahUKEwjA067qg9zyAhVIYxoKHZKKAzUQMygBegUIARD-AQ'
-bulb.save() 
+# bulb = Card.objects.get(id = 1)
+# bulb.image = 'https://archives.bulbagarden.net/media/upload/thumb/0/09/001_Bulbasaur_Channel_2.png/120px-001_Bulbasaur_Channel_2.png'
+# bulb.image = 'https://archives.bulbagarden.net/media/upload/thumb/8/8b/001Bulbasaur_Battle_Royale.jpg/240px-001Bulbasaur_Battle_Royale.jpg '
+# bulb.image = 'https://archives.bulbagarden.net/media/upload/thumb/0/09/001_Bulbasaur_Channel_2.png/120px-001_Bulbasaur_Channel_2.png'
+# bulb.save() 
+
+
+# def get_image():
+#     pokemon = Card.objects.all().filter(id__gt = 29,id__lt = 32)
+#     for poke in pokemon:
+#         p = poke.name
+#         page = requests.get(f"https://archives.bulbagarden.net/wiki/Category:{p}")
+#         soup = BeautifulSoup(page.content, 'html.parser')
+#         q =soup.find_all('img',decoding="async")
+#         a =q[0]['src']
+#         b = f'{a}'
+#         poke.image = b
+#         poke.save() 
+
+# # get_image()
+# # farfetch'd, :Mr._Mime, Nidoran♀, Nidoran♂
+# # farfetchd,mr-mime,nidoran-f,nidoran-m
+# pokemon = Card.objects.get(name = 'nidoran-m')
+# page = requests.get(f"https://archives.bulbagarden.net/wiki/Category:Nidoran♂")
+# soup = BeautifulSoup(page.content, 'html.parser')
+# q =soup.find_all('img',decoding="async")
+# a =q[0]['src']
+# b = f'{a}'
+# pokemon.image = b
+# pokemon.save()

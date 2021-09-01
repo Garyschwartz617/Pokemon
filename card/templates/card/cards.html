@@ -9,7 +9,7 @@
 {% for card in object_list %}
 <div class="card" style="width: 18rem;">
   {% if card.image %}
-    <img src="{{ card.image.url }}"  enctype="multipart/form-data" class="card-img-top" alt="">
+    <img src="{{ card.image }}"  enctype="multipart/form-data" class="card-img-top" alt="">
     {% endif %}
     <div class="card-body">
       <h5 class="card-title">{{card.name}}</h5>

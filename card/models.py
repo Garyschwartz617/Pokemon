@@ -95,16 +95,18 @@ class Response(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     status = models.CharField(choices=STATUS_CHOICE, max_length=50, default='P') 
     def good(self):
-        transactions = BalanceUpdate.objects.filter(profile = self.buyer)
-        money = 0
-        
-        for transaction in transactions:
-            money += transaction.amount
-        print(money)
-        if self.amount > money:
-            return False
-        else:
-            return True   
+        if self.amount == None:
+            return True
+        else: 
+            transactions = BalanceUpdate.objects.filter(profile = self.buyer)
+            money = 0
+            for transaction in transactions:
+                money += transaction.amount
+            # print(money)
+            if self.amount > money:
+                return False
+            else:
+                return True   
 
 
 class Answer(models.Model):
@@ -114,17 +116,21 @@ class Answer(models.Model):
     # status = models.CharField(choices=STATUS_CHOICE, max_length=50, default='P') 
     
     
-    def good(self):
-        transactions = BalanceUpdate.objects.filter(profile = self.transaction.buyer)
-        money = 0
-        
-        for transaction in transactions:
-            money += transaction.amount
-        print(money)
-        if self.transaction.amount > money:
-            return False
-        else:
-            return True   
+    # def good(self):
+    #     print(self)
+    #     if self.transaction.amount == None:
+    #         return True
+    #     else:    
+    #         transactions = BalanceUpdate.objects.filter(profile = self.transaction.buyer)
+    #         money = 0
+            
+    #         for transaction in transactions:
+    #             money += transaction.amount
+    #         print(money)
+    #         if self.transaction.amount > money:
+    #             return False
+    #         else:
+    #             return True   
 
     def swap(self):
         if self.accept == True :

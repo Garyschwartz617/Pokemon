@@ -17,7 +17,11 @@
 {% for post in object_list %}
 {% if post.status == 'O' %}
 <div class="card" style="width: 18rem;">
-    <img src="#" class="card-img-top" alt="">
+
+      {% if post.singular.card.image %}
+    <img src="{{ post.singular.card.image }}"  enctype="multipart/form-data" class="card-img-top" alt="">
+    {% endif %}
+
     <div class="card-body">
       <h5 class="card-title">{{post.singular.card.name}}</h5>
       <p class="card-text">Rarity: {{post.singular.card.rarity}}</p></p>
